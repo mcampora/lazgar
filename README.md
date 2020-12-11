@@ -1,4 +1,4 @@
-#Static Web site
+# Static Web site
 
 * public/ contains the resources
 * scripts/ contains the deployment scripts
