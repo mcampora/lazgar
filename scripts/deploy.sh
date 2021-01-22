@@ -3,6 +3,9 @@
 #
 # at the moment I selected my personal 'prod' account and 'eu-west-3' (Paris)
 
+# set the AWS profile (account) targeted
+export AWS_PROFILE='lazgar-prod'
+
 # here is the name of our bucket
 export BUCKET_NAME='lazgar'
 
