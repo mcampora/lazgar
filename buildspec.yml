@@ -1,0 +1,28 @@
+# AWS CodeBuild specification
+# sources are on Github
+# a previosu phase in the pipeline downloaded them and stored them in S3
+# the build will use this location as input
+version: 0.2
+
+#run-as: Linux-user-name
+#env: ...
+#proxy:
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12.x
+  #pre_build:
+  build:
+    commands:
+      - npm install
+      - npm run build
+  #post_build:
+
+#reports:
+
+artifacts:
+  files:
+    - '**/*'
+  #name: adbiz-prototype-frontend
+  base-directory: build
