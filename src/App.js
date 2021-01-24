@@ -5,58 +5,46 @@ import React, { useEffect } from "react";
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Container, CssBaseline, Typography } from '@material-ui/core';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
+import Paper from '@material-ui/core/Paper';
 
 // - spacing beetween the pics could be more generous
-// - add the title with a shadow layer to contrast the text
-// - add the flip pic with descriptions
 // - select the right font
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100vw',
-    height: '100vh',
     flexGrow: 1,
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
     textAlign: 'center',
-    //backgroundColor: 'rgba(79,116,153)',
-    //textColor: theme.palette.text.primary,
   },
   grid: {
   },
   item: {
     alignItems: "center",
+    padding: '10px',
   },
   contact: {
     textAlign: 'right',
-  },
-  footer: {
+    paddingBottom: '25px',
   },
   paper: {
-    padding: theme.spacing(1),
-    textAlign: 'center',
+    //padding: theme.spacing(1),
+    //textAlign: 'center',
   },
   logo: {
     maxHeight: '80px',
     textAlign: 'left',
   },
-  img: {
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
-
   card: {
-    borderRadius: '1rem',
+    borderRadius: '0.5rem',
     boxShadow: 'none',
     position: 'relative',
     minWidth: 200,
@@ -92,14 +80,17 @@ const useStyles = makeStyles((theme) => ({
 
 function Pillar(props) {
   const classes = useStyles();
+  //component="h2"
   return (
+    <Paper classes={classes.paper}>
     <Card className={classes.card}>
       <CardMedia className={classes.cover} image={props.image} />
       <Box py={3} px={2} className={classes.content}>
-        <Typography variant="h5" component="h2">{props.title}</Typography>
-        <Typography>{props.desc}</Typography>
+        <Typography variant="h5">{props.title}</Typography>
+        <Typography variant="caption" color="textSecondary">{props.desc}</Typography>
       </Box>
     </Card>
+    </Paper>
   );
 }
 
@@ -141,41 +132,33 @@ function App() {
       {/*<button onClick={handleDarkModeToggle}>Toggle Dark Mode</button>*/}
       <Container className={classes.root}>
         <Grid className={classes.grid} container spacing={0}>
-          <Grid className={classes.logo} item xs={6}>
-            <img className={classes.img, classes.logo} src="logo-title.png" alt="logo" />
-          </Grid>
-          <Grid className={classes.contact} item xs={6}>
-            <Typography>contact us...</Typography>
+          <Grid className={classes.logo} item xs={12}>
+            <img className={classes.logo} src="logo-title.png" alt="logo" />
           </Grid>
           <Grid className={classes.item} item xs={4}>
             <Pillar 
               image='city1.png'
               title='Understand'
-              desc='Where you are starting from, 
-                the strengths and weaknesses of your IT system,
-                ...'
+              desc='Where you are starting from, the need for modernisation...'
             />
           </Grid>
           <Grid className={classes.item} item xs={4}>
             <Pillar 
               image='city2.png'
               title='Define'
-              desc='Where you want to be, 
-                the trajectories to get there,
-                ...'
+              desc='Where you want to be, identity the solutions and trajectories...'
             />
           </Grid>
           <Grid className={classes.item} item xs={4}>
             <Pillar 
               image='city3.png'
               title='Transform'
-              desc='Find or develop the right skills, 
-                drive the transformation, 
+              desc='Find or develop the right skills, help with the transformation, 
                 ...'
             />
           </Grid>
-          <Grid className={classes.footer} item xs={12}>
-            <Typography>LAZGAR SAS</Typography>
+          <Grid className={classes.contact} item xs={12}>
+            <Typography>contact us...</Typography>
           </Grid>
         </Grid>
       </Container>
