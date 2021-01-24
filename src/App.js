@@ -11,8 +11,8 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
+import Link from '@material-ui/core/Link';
 
-// - spacing beetween the pics could be more generous
 // - select the right font
 
 const useStyles = makeStyles((theme) => ({
@@ -94,6 +94,14 @@ function Pillar(props) {
   );
 }
 
+const Mailto = ({ email, subject = '', body = '', children }) => {
+  let params = subject || body ? '?' : '';
+  if (subject) params += `subject=${encodeURIComponent(subject)}`;
+  if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
+  //return <a href={`mailto:${email}${params}`}>{children}</a>;
+  return <Link href={`mailto:${email}${params}`} color="inherit">{children}</Link>
+};
+
 function App() {
   const classes = useStyles();
 
@@ -158,7 +166,9 @@ function App() {
             />
           </Grid>
           <Grid className={classes.contact} item xs={12}>
-            <Typography>contact us...</Typography>
+            <Mailto email="marc.campora@lazgar.net" subject="Hello & please tell me more" body="...">
+              <Typography>Mail me to know more...</Typography>
+            </Mailto>
           </Grid>
         </Grid>
       </Container>
