@@ -82,7 +82,7 @@ function Pillar(props) {
   const classes = useStyles();
   //component="h2"
   return (
-    <Paper classes={classes.paper}>
+    /*<Paper classes={classes.paper}>*/
     <Card className={classes.card}>
       <CardMedia className={classes.cover} image={props.image} />
       <Box py={3} px={2} className={classes.content}>
@@ -90,7 +90,7 @@ function Pillar(props) {
         <Typography variant="caption" color="textSecondary">{props.desc}</Typography>
       </Box>
     </Card>
-    </Paper>
+    /*</Paper>*/
   );
 }
 
@@ -98,7 +98,6 @@ const Mailto = ({ email, subject = '', body = '', children }) => {
   let params = subject || body ? '?' : '';
   if (subject) params += `subject=${encodeURIComponent(subject)}`;
   if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
-  //return <a href={`mailto:${email}${params}`}>{children}</a>;
   return <Link href={`mailto:${email}${params}`} color="inherit">{children}</Link>
 };
 
@@ -167,7 +166,7 @@ function App() {
           </Grid>
           <Grid className={classes.contact} item xs={12}>
             <Mailto email="marc.campora@lazgar.net" subject="Hello & please tell me more" body="...">
-              <Typography>Mail me to know more...</Typography>
+              <Typography variant="body2">Mail me to know more...</Typography>
             </Mailto>
           </Grid>
         </Grid>
