@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   grid: {
   },
   item: {
-    alignItems: "center",
+    //alignItems: "center",
     padding: '10px',
   },
   contact: {
@@ -50,8 +50,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '0.5rem',
     boxShadow: 'none',
     position: 'relative',
-    minWidth: 200,
-    minHeight: 300,
+    minWidth: 180,
+    //minHeight: 200,
+    minHeight: 360,
+    //maxWidth: 300,
     '&:after': {
       content: '""',
       display: 'block',
@@ -147,7 +149,7 @@ function App() {
       <CssBaseline/>
       {/*<button onClick={handleDarkModeToggle}>Toggle Dark Mode</button>*/}
       <Container className={classes.root}>
-        <Grid className={classes.grid} container spacing={0}>
+        <Grid className={classes.grid} container alignItems="flex-start" justify="center" spacing={0}>
           <Grid className={classes.logo} item xs={12}>
             <img className={classes.logo} src="logo-title.png" alt="logo" />
           </Grid>
