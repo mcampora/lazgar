@@ -12,6 +12,8 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
+import EmailIcon from '@material-ui/icons/Email';
+import IconButton from '@material-ui/core/IconButton';
 
 // - select the right font
 
@@ -34,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   contact: {
     textAlign: 'right',
     paddingBottom: '25px',
+    paddingRight: '10px',
   },
   paper: {
     //padding: theme.spacing(1),
@@ -48,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'none',
     position: 'relative',
     minWidth: 200,
-    minHeight: 360,
+    minHeight: 300,
     '&:after': {
       content: '""',
       display: 'block',
@@ -80,9 +83,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Pillar(props) {
   const classes = useStyles();
-  //component="h2"
   return (
-    /*<Paper classes={classes.paper}>*/
     <Card className={classes.card}>
       <CardMedia className={classes.cover} image={props.image} />
       <Box py={3} px={2} className={classes.content}>
@@ -90,7 +91,6 @@ function Pillar(props) {
         <Typography variant="caption" color="textSecondary">{props.desc}</Typography>
       </Box>
     </Card>
-    /*</Paper>*/
   );
 }
 
@@ -98,7 +98,16 @@ const Mailto = ({ email, subject = '', body = '', children }) => {
   let params = subject || body ? '?' : '';
   if (subject) params += `subject=${encodeURIComponent(subject)}`;
   if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
-  return <Link href={`mailto:${email}${params}`} color="inherit">{children}</Link>
+  return (
+    <Box>
+      <Typography variant="body2">{children}</Typography>
+      <IconButton component="span">
+        <Link href={`mailto:${email}${params}`} color="inherit">
+          <EmailIcon/>
+        </Link>
+      </IconButton>
+    </Box>
+  );
 };
 
 function App() {
@@ -142,21 +151,21 @@ function App() {
           <Grid className={classes.logo} item xs={12}>
             <img className={classes.logo} src="logo-title.png" alt="logo" />
           </Grid>
-          <Grid className={classes.item} item xs={4}>
+          <Grid className={classes.item} item xs={12} sm={4}>
             <Pillar 
               image='city1.png'
               title='Understand'
               desc='Where you are starting from, the need for modernisation...'
             />
           </Grid>
-          <Grid className={classes.item} item xs={4}>
+          <Grid className={classes.item} item xs={12} sm={4}>
             <Pillar 
               image='city2.png'
               title='Define'
               desc='Where you want to be, identity the solutions and trajectories...'
             />
           </Grid>
-          <Grid className={classes.item} item xs={4}>
+          <Grid className={classes.item} item xs={12} sm={4}>
             <Pillar 
               image='city3.png'
               title='Transform'
@@ -166,7 +175,7 @@ function App() {
           </Grid>
           <Grid className={classes.contact} item xs={12}>
             <Mailto email="marc.campora@lazgar.net" subject="Hello & please tell me more" body="...">
-              <Typography variant="body2">Mail me to know more...</Typography>
+              Mail me to know more
             </Mailto>
           </Grid>
         </Grid>
