@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     textAlign: 'center',
+    padding: '10px',
   },
   grid: {
   },
@@ -102,12 +103,12 @@ const Mailto = ({ email, subject = '', body = '', children }) => {
   if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
   return (
     <Box>
-      <Typography variant="body2">{children}</Typography>
-      <IconButton component="span">
-        <Link href={`mailto:${email}${params}`} color="inherit">
-          <EmailIcon/>
-        </Link>
-      </IconButton>
+      <Link href={`mailto:${email}${params}`} color="inherit">
+        <Typography variant="body2">{children}</Typography>
+        {/*<EmailIcon/>
+        <IconButton component="span">
+        </IconButton>*/}
+      </Link>
     </Box>
   );
 };
@@ -177,7 +178,7 @@ function App() {
           </Grid>
           <Grid className={classes.contact} item xs={12}>
             <Mailto email="marc.campora@lazgar.net" subject="Hello & please tell me more" body="...">
-              Mail me to know more
+              Contact us to know more...
             </Mailto>
           </Grid>
         </Grid>
