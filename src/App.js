@@ -14,6 +14,8 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import EmailIcon from '@material-ui/icons/Email';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 
 // - select the right font
 
@@ -97,22 +99,6 @@ function Pillar(props) {
   );
 }
 
-const Mailto = ({ email, subject = '', body = '', children }) => {
-  let params = subject || body ? '?' : '';
-  if (subject) params += `subject=${encodeURIComponent(subject)}`;
-  if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
-  return (
-    <Box>
-      <Link href={`mailto:${email}${params}`} color="inherit">
-        <Typography variant="body2">{children}</Typography>
-        {/*<EmailIcon/>
-        <IconButton component="span">
-        </IconButton>*/}
-      </Link>
-    </Box>
-  );
-};
-
 function App() {
   const classes = useStyles();
 
@@ -150,9 +136,19 @@ function App() {
       <CssBaseline/>
       {/*<button onClick={handleDarkModeToggle}>Toggle Dark Mode</button>*/}
       <Container className={classes.root}>
-        <Grid className={classes.grid} container alignItems="flex-start" justify="center" spacing={0}>
-          <Grid className={classes.logo} item xs={12}>
+        <Grid className={classes.grid} container alignItems="flex-end" justify="center" spacing={0}>
+          <Grid className={classes.logo} item xs={6}>
             <img className={classes.logo} src="logo-title.png" alt="logo" />
+          </Grid>
+          <Grid className={classes.contact} item xs={6}>
+            <Button
+              variant="contained"
+              className={classes.button}
+              endIcon={<Icon>send</Icon>}
+              href="mailto:marc.campor@lazgar.net?subject=Please tell me more...&body=Hello, I'd like to know more about your expertise and the type of services you are offering. Please come back to me. Regards."
+            >
+              Contact us
+            </Button>
           </Grid>
           <Grid className={classes.item} item xs={12} sm={4}>
             <Pillar 
@@ -176,10 +172,16 @@ function App() {
                 ...'
             />
           </Grid>
-          <Grid className={classes.contact} item xs={12}>
-            <Mailto email="marc.campora@lazgar.net" subject="Hello & please tell me more" body="...">
-              Contact us to know more...
-            </Mailto>
+          {/*<Grid className={classes.item} item xs={12}>
+            <ul>
+              <li>Cloud migration</li>
+              <li>Application modernisation</li>
+              <li>Development practice</li>
+              <li>...</li>
+            </ul>
+          </Grid>*/}
+          <Grid className={classes.item} item xs={12}>
+            All right reserved Lazgar, 2021
           </Grid>
         </Grid>
       </Container>
