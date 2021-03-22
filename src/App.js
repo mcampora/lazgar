@@ -148,10 +148,10 @@ function App() {
       {/*<button onClick={handleDarkModeToggle}>Toggle Dark Mode</button>*/}
       <Container className={classes.root}>
         <Grid className={classes.grid} container alignItems="flex-end" justify="center" spacing={0}>
-          <Grid className={classes.logo} item xs={6}>
+          <Grid className={classes.logo} item xs={12} md={6}>
             <img className={classes.logo} src="logo-title.png" alt="logo" />
           </Grid>
-          <Grid className={classes.contact} item xs={6}>
+          <Grid className={classes.contact} item xs={12} md={6}>
             <Button
               variant="contained"
               className={classes.button}
@@ -161,21 +161,21 @@ function App() {
               Contact us
             </Button>
           </Grid>
-          <Grid className={classes.item} item xs={12} sm={4}>
+          <Grid className={classes.item} item xs={12} lg={4}>
             <Pillar 
               image='city1.png'
               title='Understand'
               desc='Where you are starting from, the need for modernisation...'
             />
           </Grid>
-          <Grid className={classes.item} item xs={12} sm={4}>
+          <Grid className={classes.item} item xs={12} lg={4}>
             <Pillar 
               image='city2.png'
               title='Define'
               desc='Where you want to be, identity the solutions and trajectories...'
             />
           </Grid>
-          <Grid className={classes.item} item xs={12} sm={4}>
+          <Grid className={classes.item} item xs={12} lg={4}>
             <Pillar 
               image='city3.png'
               title='Transform'
@@ -185,22 +185,22 @@ function App() {
           </Grid>
           <Grid item className={classes.skills} xs={12}>
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} lg={6}>
                 <Grid container justify="flex-start" alignItems="center">
                   <Typography className={classes.bullet}>1</Typography><Typography>Cloud migration</Typography>
                 </Grid>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} lg={6}>
                 <Grid container justify="flex-start" alignItems="center">
                   <Typography className={classes.bullet}>2</Typography><Typography>Application modernisation</Typography>
                 </Grid>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} lg={6}>
                 <Grid container justify="flex-start" alignItems="center">
                   <Typography className={classes.bullet}>3</Typography><Typography>Development practice</Typography>
                 </Grid>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} lg={6}>
                 <Grid container justify="flex-start" alignItems="center">
                   <Typography className={classes.bullet}>4</Typography><Typography>Architecture improvement</Typography>
                 </Grid>
