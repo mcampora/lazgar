@@ -36,6 +36,17 @@ const useStyles = makeStyles((theme) => ({
     //alignItems: "center",
     padding: '10px',
   },
+  skills: {
+    padding: '50px',
+    margin: '10px',
+    //background: 'rgba(79,116,154,1)',
+    background: 'rgba(89,126,164,1)',
+    borderRadius: '0.5rem',
+  },
+  bullet: {
+    padding: '10px',
+    fontSize: '2rem',
+  },
   contact: {
     textAlign: 'right',
     paddingBottom: '25px',
@@ -172,16 +183,33 @@ function App() {
                 ...'
             />
           </Grid>
-          {/*<Grid className={classes.item} item xs={12}>
-            <ul>
-              <li>Cloud migration</li>
-              <li>Application modernisation</li>
-              <li>Development practice</li>
-              <li>...</li>
-            </ul>
-          </Grid>*/}
+          <Grid item className={classes.skills} xs={12}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6}>
+                <Grid container justify="flex-start" alignItems="center">
+                  <Typography className={classes.bullet}>1</Typography><Typography>Cloud migration</Typography>
+                </Grid>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Grid container justify="flex-start" alignItems="center">
+                  <Typography className={classes.bullet}>2</Typography><Typography>Application modernisation</Typography>
+                </Grid>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Grid container justify="flex-start" alignItems="center">
+                  <Typography className={classes.bullet}>3</Typography><Typography>Development practice</Typography>
+                </Grid>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Grid container justify="flex-start" alignItems="center">
+                  <Typography className={classes.bullet}>4</Typography><Typography>Architecture improvement</Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
           <Grid className={classes.item} item xs={12}>
-            All right reserved Lazgar, 2021
+            <img className={classes.logo} src="logo-mini.png" alt="logo" /><br/>
+            <Typography variant="caption">All right reserved Lazgar, 2021</Typography>
           </Grid>
         </Grid>
       </Container>
