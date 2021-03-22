@@ -99,8 +99,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 # Todo
 
 * the CloudFormation script can be improved
-** no controled name for the web bucket policy
-** the web bucket is not cleaned up when we delete the stack
-** missing a pipeline notification
-** Github connection requires a manual action
+    * no controled name for the web bucket policy
+    * the web bucket is not cleaned up when we delete the stack
+    * missing a pipeline notification
+    * Github connection requires a manual action
 
