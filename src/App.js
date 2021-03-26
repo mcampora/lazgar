@@ -187,22 +187,22 @@ function App() {
             <Grid container spacing={3}>
               <Grid item xs={12} lg={6}>
                 <Grid container justify="flex-start" alignItems="center">
-                  <Typography className={classes.bullet}>1</Typography><Typography>Cloud migration</Typography>
+                  <Typography className={classes.bullet}>1</Typography><Typography>Cloud strategy and optimisation</Typography>
                 </Grid>
               </Grid>
               <Grid item xs={12} lg={6}>
                 <Grid container justify="flex-start" alignItems="center">
-                  <Typography className={classes.bullet}>2</Typography><Typography>Application modernisation</Typography>
+                  <Typography className={classes.bullet}>2</Typography><Typography>Manage your growth or application modernization</Typography>
                 </Grid>
               </Grid>
               <Grid item xs={12} lg={6}>
                 <Grid container justify="flex-start" alignItems="center">
-                  <Typography className={classes.bullet}>3</Typography><Typography>Development practice</Typography>
+                  <Typography className={classes.bullet}>3</Typography><Typography>Emerging or innovative products</Typography>
                 </Grid>
               </Grid>
               <Grid item xs={12} lg={6}>
                 <Grid container justify="flex-start" alignItems="center">
-                  <Typography className={classes.bullet}>4</Typography><Typography>Architecture improvement</Typography>
+                  <Typography className={classes.bullet}>4</Typography><Typography>Technical recruitment, partnership, due diligence, ...</Typography>
                 </Grid>
               </Grid>
             </Grid>
