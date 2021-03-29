@@ -184,28 +184,12 @@ function App() {
             />
           </Grid>
           <Grid item className={classes.skills} xs={12}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} lg={6}>
-                <Grid container justify="flex-start" alignItems="center">
-                  <Typography className={classes.bullet}>1</Typography><Typography>Cloud strategy and optimisation</Typography>
-                </Grid>
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                <Grid container justify="flex-start" alignItems="center">
-                  <Typography className={classes.bullet}>2</Typography><Typography>Manage your growth or application modernization</Typography>
-                </Grid>
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                <Grid container justify="flex-start" alignItems="center">
-                  <Typography className={classes.bullet}>3</Typography><Typography>Emerging or innovative products</Typography>
-                </Grid>
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                <Grid container justify="flex-start" alignItems="center">
-                  <Typography className={classes.bullet}>4</Typography><Typography>Technical recruitment, partnership, due diligence, ...</Typography>
-                </Grid>
-              </Grid>
-            </Grid>
+            <Typography>I can help you: </Typography>
+            <Typography>- Refine your Cloud strategy,</Typography>
+            <Typography>- Manage your growth, recruiting technical staff or evolving your architecture,</Typography>
+            <Typography>- Evaluate emerging technologies and their potential benefit,</Typography>
+            <Typography>- Run due diligences,</Typography>
+            <Typography>- ...</Typography>
           </Grid>
           <Grid className={classes.item} item xs={12}>
             <img className={classes.logo} src="logo-mini.png" alt="logo" /><br/>
