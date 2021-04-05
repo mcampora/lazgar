@@ -156,7 +156,7 @@ function App() {
               variant="contained"
               className={classes.button}
               endIcon={<Icon>send</Icon>}
-              href="mailto:marc.campor@lazgar.net?subject=Please tell me more...&body=Hello, I'd like to know more about your expertise and the type of services you are offering. Please come back to me. Regards."
+              href="mailto:marc.campora@lazgar.net?subject=Please tell me more...&body=Hello, I'd like to know more about your expertise and the type of services you are offering. Please come back to me. Regards."
             >
               Contact us
             </Button>
