@@ -7,13 +7,6 @@ jobs:
     steps:
       - name: Checking out repository
         uses: actions/checkout@v2
-      - name: Update the infra
-        run: |
-          ./deploy-infra.sh
-      - name: Install packages
-        run: npm install
-      - name: Build the Web site
-        run: npm run build
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
         with:
@@ -21,6 +14,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
       - run: aws sts get-caller-identity
+      - name: Update the infra
+        run: |
+          ./deploy-infra.sh
+      - name: Install packages
+        run: npm install
+      - name: Build the Web site
+        run: npm run build
       - name: Copy the artefacts
         run: |
           aws s3 sync --delete ./build s3://lazgar-web/
