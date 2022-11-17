@@ -16,6 +16,19 @@ import EmailIcon from '@material-ui/icons/Email';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import List from '@material-ui/core/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import CloudIcon from '@material-ui/icons/Cloud';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import SecurityIcon from '@material-ui/icons/Security';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import PeopleIcon from '@material-ui/icons/People';
+import FiberNewIcon from '@material-ui/icons/FiberNew';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import FastForwardIcon from '@material-ui/icons/FastForward';
+import TrackChangesIcon from '@material-ui/icons/TrackChanges';
 
 // - select the right font
 
@@ -35,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
   item: {
     //alignItems: "center",
     padding: '10px',
+  },
+  skill: {
+    textAlign: 'left',
   },
   skills: {
     padding: '50px',
@@ -183,14 +199,40 @@ function App() {
                 ...'
             />
           </Grid>
-          <Grid item className={classes.skills} xs={12}>
-            <Typography>I can help you: </Typography>
-            <Typography>- Refine your Cloud strategy,</Typography>
-            <Typography>- Manage your growth, recruiting technical staff or evolving your architecture,</Typography>
-            <Typography>- Evaluate emerging technologies and their potential benefit,</Typography>
-            <Typography>- Run due diligences,</Typography>
-            <Typography>- ...</Typography>
-          </Grid>
+            <List 
+              subheader={
+                <ListSubheader component="div" className={classes.task} id="nested-list-subheader">Type of missions: </ListSubheader>
+              }
+            >
+              <ListItem>
+                <ListItemIcon><CloudIcon/></ListItemIcon>
+                <ListItemText primary="Cloud strategy" />
+              </ListItem>
+              <ListItem>
+                <ListItemIcon><SecurityIcon/></ListItemIcon>
+                <ListItemText primary="Security review" />
+              </ListItem>
+              <ListItem>
+                <ListItemIcon><AttachMoneyIcon/></ListItemIcon>
+                <ListItemText primary="Cost optimisation" /></ListItem>
+              <ListItem>
+                <ListItemIcon><PeopleIcon/></ListItemIcon>
+                <ListItemText primary="Recruitment" /></ListItem>
+              <ListItem>
+                <ListItemIcon><FiberNewIcon/></ListItemIcon>
+                <ListItemText primary="Emerging technologies, evaluations, prototypes" /></ListItem>
+              <ListItem>
+                <ListItemIcon><AssessmentIcon/></ListItemIcon>
+                <ListItemText primary="Due diligence" /></ListItem>
+              <ListItem>
+                <ListItemIcon><FastForwardIcon/></ListItemIcon>
+                <ListItemText primary="Modernisation" /></ListItem>
+              <ListItem>
+                <ListItemIcon><TrackChangesIcon/></ListItemIcon>
+                <ListItemText primary="Project management" /></ListItem>
+              <ListItem>
+                <ListItemText primary="..." /></ListItem>
+            </List>
           <Grid className={classes.item} item xs={12}>
             <img className={classes.logo} src="logo-mini.png" alt="logo" /><br/>
             <Typography variant="caption">All right reserved Lazgar, 2021</Typography>
