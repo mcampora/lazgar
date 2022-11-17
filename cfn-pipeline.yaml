@@ -200,15 +200,15 @@ Resources:
   #               Resource:
   #                 - "*"
   
-  #   DeploymentBucket: 
-  #   Type: 'AWS::S3::Bucket'
-  #   Properties:
-  #     BucketName: !Sub ${AWS::StackName}-web
-  #     AccessControl: PublicRead
-  #     WebsiteConfiguration:
-  #       IndexDocument: index.html
-  #       ErrorDocument: error.html
-  #   DeletionPolicy: Retain
+  DeploymentBucket: 
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-web
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+    DeletionPolicy: Retain
   
   # dont know how to tweak the name
   DeploymentBucketPolicy:
