@@ -198,7 +198,7 @@ function App() {
             >
               <ListItem>
                 <ListItemIcon><CloudIcon/></ListItemIcon>
-                <ListItemText primary="Cloud strategy" />
+                <ListItemText primary="Cloud strategies" />
               </ListItem>
               <ListItem>
                 <ListItemIcon><SecurityIcon/></ListItemIcon>
