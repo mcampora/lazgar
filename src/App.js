@@ -207,7 +207,7 @@ function App() {
                 <ListItemText primary="Recruitment" /></ListItem>
               <ListItem>
                 <ListItemIcon><FiberNewIcon/></ListItemIcon>
-                <ListItemText primary="Emerging technologies, evaluations, prototypes" /></ListItem>
+                <ListItemText primary="Emerging technologies" /></ListItem>
               <ListItem>
                 <ListItemIcon><AssessmentIcon/></ListItemIcon>
                 <ListItemText primary="Due diligence" /></ListItem>
