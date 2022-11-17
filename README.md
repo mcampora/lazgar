@@ -52,19 +52,29 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-# Create a continous integration / continous delivery pipeline
-You can create an AWS CodePipeline using the provided CloudFormation script:
->./deploy.sh  
+# Continuous integration / continuous delivery pipeline
+The repo contains a Github Actions workflow.
 
-The script will create in your default region and account a pipeline, a build project and 2 S3 buckets (one to store intermediate artefacts and one to deploy your Web site).
+It relies on a programatic AWS id which has to be created upfront and stored as secrets in the repo.  
 
-Your Web site will be available at http://lazgar-web.s3-website-us-east-1.amazonaws.com
+The workflow create or update the infrastructure pieces using CloudFormation (ex. bucket, ...).  
+Then build and upload the Web site in the appropriate bucket.  
 
+The Web site is available at http://lazgar-web.s3-website-eu-west-1.amazonaws.com  
+An external DNS entry is rerouting https://lazgar.net to this URL
 # Todo
 
-* the CloudFormation script can be improved
-    * no controled name for the web bucket policy
-    * the web bucket is not cleaned up when we delete the stack
-    * missing a pipeline notification
-    * Github connection requires a manual action
-* move to Github Actions
+* move to role based authentication for the Github actions workflow
+* differentiate the infra role and the web deployment role
+* introduce dev and prod accounts/workflow  
+>      on:  
+>        push:  
+>            tags:  
+>                - "v*prod"  
+>                - "prod" 
+>      ...
+>      - name: Rebase prod
+>        run: |
+>          git switch prod || git checkout -b prod
+>          git rebase "$GITHUB_REF_NAME"
+>          git push -f --set-upstream origin prod

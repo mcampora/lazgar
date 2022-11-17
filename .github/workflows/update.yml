@@ -13,7 +13,8 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
-      - run: aws sts get-caller-identity
+      - name: Check AWS identity
+        run: aws sts get-caller-identity
       - name: Update the infra
         run: |
           ./deploy-infra.sh
