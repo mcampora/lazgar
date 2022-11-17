@@ -7,6 +7,9 @@ jobs:
     steps:
       - name: Checking out repository
         uses: actions/checkout@v2
+      - name: Update the infra
+        run: |
+          ./deploy-infra.sh
       - name: Install packages
         run: npm install
       - name: Build the Web site

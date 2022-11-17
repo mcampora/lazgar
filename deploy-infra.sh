@@ -2,4 +2,4 @@
 aws cloudformation deploy \
     --capabilities CAPABILITY_NAMED_IAM \
     --stack-name lazgar \
-    --template-file ./cfn-pipeline.yaml \
+    --template-file ./lazgar-infra.yaml \

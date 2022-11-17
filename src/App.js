@@ -13,7 +13,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import List from '@material-ui/core/List';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import CloudIcon from '@material-ui/icons/Cloud';
@@ -191,14 +190,10 @@ function App() {
                 ...'
             />
           </Grid>
-            <List 
-              subheader={
-                <ListSubheader component="div" className={classes.task} id="nested-list-subheader">Type of missions: </ListSubheader>
-              }
-            >
+            <List>
               <ListItem>
                 <ListItemIcon><CloudIcon/></ListItemIcon>
-                <ListItemText primary="Cloud strategies" />
+                <ListItemText primary="Cloud strategy" />
               </ListItem>
               <ListItem>
                 <ListItemIcon><SecurityIcon/></ListItemIcon>

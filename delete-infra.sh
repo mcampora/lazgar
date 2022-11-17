@@ -1,9 +1,7 @@
-# select dev or prod environment
-export TARGET=lazgar-prod
+# use current AWS credentials
 
 # delete the stack
-aws --profile $TARGET \
-    cloudformation delete-stack \
+aws cloudformation delete-stack \
     --stack-name lazgar
 
 # wait for completion
