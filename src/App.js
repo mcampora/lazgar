@@ -2,7 +2,7 @@
 import './App.css';
 
 import React, { useEffect } from "react";
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -10,10 +10,6 @@ import { Container, CssBaseline, Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
-import EmailIcon from '@material-ui/icons/Email';
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import List from '@material-ui/core/List';
@@ -135,12 +131,9 @@ function App() {
   useEffect(() => {
     setDarkMode(prefersDarkMode);
   }, [prefersDarkMode]);
-  const handleDarkModeToggle = () => {
-    setDarkMode(!darkMode);
-  };
 
   const theme = React.useMemo(() =>
-    createMuiTheme({
+    createTheme({
       palette: {
         type: darkMode ? "dark" : "light",
         background: {
@@ -155,13 +148,12 @@ function App() {
           "fontWeightMedium": 500
         },
       }
-    })
+    }), [darkMode]
   );
   
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline/>
-      {/*<button onClick={handleDarkModeToggle}>Toggle Dark Mode</button>*/}
       <Container className={classes.root}>
         <Grid className={classes.grid} container alignItems="flex-end" justify="center" spacing={0}>
           <Grid className={classes.logo} item xs={12} md={6}>
