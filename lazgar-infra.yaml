@@ -10,7 +10,7 @@ Resources:
   DeploymentBucket: 
     Type: 'AWS::S3::Bucket'
     Properties:
-      BucketName: !Sub ${AWS::StackName}-web
+      BucketName: !Sub ${AWS::StackName}
       AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
