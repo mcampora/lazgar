@@ -60,10 +60,10 @@ It relies on a programatic AWS id which has to be created upfront and stored as 
 The workflow create or update the infrastructure pieces using CloudFormation (ex. bucket, ...).  
 Then build and upload the Web site in the appropriate bucket.  
 
-The Web site is available at http://lazgar-web.s3-website-eu-west-1.amazonaws.com  
+The Web site is available at http://lazgar.s3-website-eu-west-1.amazonaws.com
 An external DNS entry is rerouting https://lazgar.net to this URL
 # Todo
-
+* at the moment the bucket is created manually, pull the project, build it and push the result using aws s3 sync --delete ./build s3://lazgar/
 * move to role based authentication for the Github actions workflow
 * differentiate the infra role and the web deployment role
 * introduce dev and prod accounts/workflow  
