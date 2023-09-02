@@ -44,7 +44,7 @@ Resources:
             Resource: !Join 
               - ''
               - - 'arn:aws:s3:::'
-                - !Ref DeploymentBucket
+                - !Ref WWWDeploymentBucket
                 - /*
-      Bucket: !Ref DeploymentBucket
+      Bucket: !Ref WWWDeploymentBucket
 
