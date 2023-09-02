@@ -192,7 +192,7 @@ function App() {
           </Grid>
           <Grid className={classes.item} item xs={12}>
             <img className={classes.logo} src="logo-mini.png" alt="logo" /><br/>
-            <Typography variant="caption">All right reserved Lazgar, 2021</Typography>
+            <Typography variant="caption">All right reserved Lazgar, 2023</Typography>
           </Grid>
         </Grid>
       </Container>
