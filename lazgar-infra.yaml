@@ -10,13 +10,21 @@ Resources:
   DeploymentBucket: 
     Type: 'AWS::S3::Bucket'
     Properties:
-      BucketName: !Sub ${AWS::StackName}
+      BucketName: !Sub ${AWS::StackName}.net
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        RedirectAllRequestsTo:
+          HostName: www.${AWS::StackName}.net
+  
+  WWWDeploymentBucket: 
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Sub www.${AWS::StackName}.net
       AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
-    DeletionPolicy: Retain
-  
+
   # dont know how to tweak the name
   DeploymentBucketPolicy:
     Type: AWS::S3::BucketPolicy

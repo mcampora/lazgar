@@ -12,18 +12,18 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import CloudIcon from '@material-ui/icons/Cloud';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import SecurityIcon from '@material-ui/icons/Security';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import PeopleIcon from '@material-ui/icons/People';
-import FiberNewIcon from '@material-ui/icons/FiberNew';
-import AssessmentIcon from '@material-ui/icons/Assessment';
-import FastForwardIcon from '@material-ui/icons/FastForward';
-import TrackChangesIcon from '@material-ui/icons/TrackChanges';
+//import List from '@material-ui/core/List';
+//import ListItem from '@material-ui/core/ListItem';
+//import ListItemText from '@material-ui/core/ListItemText';
+//import CloudIcon from '@material-ui/icons/Cloud';
+//import ListItemIcon from '@material-ui/core/ListItemIcon';
+//import SecurityIcon from '@material-ui/icons/Security';
+//import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+//import PeopleIcon from '@material-ui/icons/People';
+//import FiberNewIcon from '@material-ui/icons/FiberNew';
+//import AssessmentIcon from '@material-ui/icons/Assessment';
+//import FastForwardIcon from '@material-ui/icons/FastForward';
+//import TrackChangesIcon from '@material-ui/icons/TrackChanges';
 
 // - select the right font
 
@@ -186,10 +186,21 @@ function App() {
             <Pillar 
               image='city3.png'
               title='Transform'
-              desc='Find or develop the right skills, help with the transformation, 
+              desc='Find or develop the right skills, lead the transformation, 
                 ...'
             />
           </Grid>
+          <Grid className={classes.item} item xs={12}>
+            <img className={classes.logo} src="logo-mini.png" alt="logo" /><br/>
+            <Typography variant="caption">All right reserved Lazgar, 2021</Typography>
+          </Grid>
+        </Grid>
+      </Container>
+    </ThemeProvider>
+  );
+}
+
+          /*
             <List>
               <ListItem>
                 <ListItemIcon><CloudIcon/></ListItemIcon>
@@ -220,14 +231,6 @@ function App() {
               <ListItem>
                 <ListItemText primary="..." /></ListItem>
             </List>
-          <Grid className={classes.item} item xs={12}>
-            <img className={classes.logo} src="logo-mini.png" alt="logo" /><br/>
-            <Typography variant="caption">All right reserved Lazgar, 2021</Typography>
-          </Grid>
-        </Grid>
-      </Container>
-    </ThemeProvider>
-  );
-}
+          */
 
 export default App;

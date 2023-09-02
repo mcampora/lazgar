@@ -62,8 +62,14 @@ Then build and upload the Web site in the appropriate bucket.
 
 The Web site is available at http://lazgar.s3-website-eu-west-1.amazonaws.com
 An external DNS entry is rerouting https://lazgar.net to this URL
+
 # Todo
-* at the moment the bucket is created manually, pull the project, build it and push the result using aws s3 sync --delete ./build s3://lazgar/
+* at the moment the buckets are created manually
+    * 2 buckets have been created lazgar.net and www.lazgar.net
+    * the first one is configured as a web server however redirect to the second one
+    * the second one is configured as a web server and deliver its content
+    * 2 DNS entries have been created in R53 and point to these buckets
+    * pull the project, build it, push the result using aws s3 sync --delete ./build s3://www.lazgar.net/
 * move to role based authentication for the Github actions workflow
 * differentiate the infra role and the web deployment role
 * introduce dev and prod accounts/workflow  
