@@ -11,7 +11,6 @@ Resources:
     Type: 'AWS::S3::Bucket'
     Properties:
       BucketName: !Sub ${AWS::StackName}.net
-      #AccessControl: PublicRead
       PublicAccessBlockConfiguration:
         BlockPublicAcls: false
       WebsiteConfiguration:
@@ -22,14 +21,12 @@ Resources:
     Type: 'AWS::S3::Bucket'
     Properties:
       BucketName: !Sub www.${AWS::StackName}.net
-      #AccessControl: PublicRead
       PublicAccessBlockConfiguration:
         BlockPublicAcls: false
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
 
-  # dont know how to tweak the name
   DeploymentBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
