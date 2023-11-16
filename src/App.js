@@ -11,7 +11,7 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+//import Icon from '@material-ui/core/Icon';
 //import List from '@material-ui/core/List';
 //import ListItem from '@material-ui/core/ListItem';
 //import ListItemText from '@material-ui/core/ListItemText';
@@ -159,10 +159,10 @@ function App() {
       <CssBaseline/>
       <Container className={classes.root}>
         <Grid className={classes.grid} container alignItems="flex-end" justify="center" spacing={0}>
-          <Grid className={classes.logo} item xs={12} md={6}>
+          <Grid className={classes.logo} item xs={12} md={6} lg={6}>
             <img className={classes.logo} src="logo-title.png" alt="logo" />
           </Grid>
-          <Grid className={classes.contact} item xs={12} md={6}>
+          <Grid className={classes.contact} item xs={12} md={6} lg={6}>
             <Button
               variant="contained"
               className={classes.button}
