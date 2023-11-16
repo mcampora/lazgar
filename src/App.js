@@ -54,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
     background: 'rgba(89,126,164,1)',
     borderRadius: '0.5rem',
   },
+  badge: {
+    width: '100px',
+    margin: '10px',
+  },
   bullet: {
     padding: '10px',
     fontSize: '2rem',
@@ -170,28 +174,33 @@ function App() {
           </Grid>
           <Grid className={classes.item} item xs={12} lg={4}>
             <Pillar 
-              image='city1.png'
+              image='archi1.jpg'
               title='Understand'
               desc='Where you are starting from, the need for modernisation...'
             />
           </Grid>
           <Grid className={classes.item} item xs={12} lg={4}>
             <Pillar 
-              image='city2.png'
+              image='archi2.jpg'
               title='Define'
               desc='Where you want to be, identity the solutions and trajectories...'
             />
           </Grid>
           <Grid className={classes.item} item xs={12} lg={4}>
             <Pillar 
-              image='city3.png'
+              image='archi3.jpg' 
               title='Transform'
               desc='Find or develop the right skills, lead the transformation, 
                 ...'
             />
           </Grid>
+          <Grid>
+          <img className={classes.badge} src="ccp.png"/>
+          <img className={classes.badge} src="csap.png"/>
+          <img className={classes.badge} src="css.png"/>
+          </Grid>
           <Grid className={classes.item} item xs={12}>
-            <img className={classes.logo} src="logo-mini.png" alt="logo" /><br/>
+            <Typography variant="caption">Photo by <a href="https://unsplash.com/@bady?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">bady abbas</a>, <a href="https://unsplash.com/@lucabravo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Luca Bravo</a> and <a href="https://unsplash.com/@joelfilip?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Joel Filipe</a> on <a href="https://unsplash.com/photos/white-cubby-shelf-hxi_yRxODNc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></Typography><br/>
             <Typography variant="caption">All right reserved Lazgar, 2023</Typography>
           </Grid>
         </Grid>
@@ -200,6 +209,7 @@ function App() {
   );
 }
 
+            /*<img className={classes.logo} src="logo-mini.png" alt="logo" /><br/>*/
           /*
             <List>
               <ListItem>
