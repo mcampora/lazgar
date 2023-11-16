@@ -166,7 +166,7 @@ function App() {
             <Button
               variant="contained"
               className={classes.button}
-              endIcon={<Icon>send</Icon>}
+              //endIcon={<Icon>send</Icon>}
               href="mailto:marc.campora@lazgar.net?subject=Please tell me more...&body=Hello, I'd like to know more about your expertise and the type of services you are offering. Please come back to me. Regards."
             >
               Contact us
@@ -176,22 +176,21 @@ function App() {
             <Pillar 
               image='archi1.jpg'
               title='Understand'
-              desc='Where you are starting from, the need for modernisation...'
+              desc='where you are starting from, the need for modernisation'
             />
           </Grid>
           <Grid className={classes.item} item xs={12} lg={4}>
             <Pillar 
               image='archi2.jpg'
               title='Define'
-              desc='Where you want to be, identity the solutions and trajectories...'
+              desc='where you want to be, identity the solutions and trajectories'
             />
           </Grid>
           <Grid className={classes.item} item xs={12} lg={4}>
             <Pillar 
               image='archi3.jpg' 
               title='Transform'
-              desc='Find or develop the right skills, lead the transformation, 
-                ...'
+              desc='find or develop the right skills, lead the transformation'
             />
           </Grid>
           <Grid>
