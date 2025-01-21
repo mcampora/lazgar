@@ -201,7 +201,7 @@ function App() {
           </Grid>
           <Grid className={classes.item} item xs={12}>
             <Typography variant="caption">Photo by <a href="https://unsplash.com/@bady?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">bady abbas</a>, <a href="https://unsplash.com/@lucabravo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Luca Bravo</a> and <a href="https://unsplash.com/@joelfilip?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Joel Filipe</a> on <a href="https://unsplash.com/photos/white-cubby-shelf-hxi_yRxODNc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></Typography><br/>
-            <Typography variant="caption">© 2024 Lazgar, all rights reserved</Typography>
+            <Typography variant="caption">© 2025 Lazgar, all rights reserved</Typography>
           </Grid>
         </Grid>
       </Container>
