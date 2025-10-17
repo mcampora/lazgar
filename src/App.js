@@ -195,6 +195,7 @@ function App() {
           </Grid>
           <Grid>
           <img className={classes.badge} src="ccp.png" alt="ccp"/>
+          <img className={classes.badge} src="caip.png" alt="caip"/>
           <img className={classes.badge} src="csap.png" alt="csap"/>
           <img className={classes.badge} src="css.png" alt="css"/>
           <img className={classes.badge} src="cdas.png" alt="cdas"/>
