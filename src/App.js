@@ -216,13 +216,13 @@ function App() {
         {/* Approach */}
         <Box sx={{ mb: 6, textAlign: 'center' }}>
           <Grid container justifyContent="center" spacing={2}>
-            <Grid size={{ xs: 12, lg: 4 }}>
+            <Grid item xs={12} lg={4}>
               <Pillar image='archi1.jpg' title='Understand' />
             </Grid>
-            <Grid size={{ xs: 12, lg: 4 }}>
+            <Grid item xs={12} lg={4}>
               <Pillar image='archi2.jpg' title='Define' />
             </Grid>
-            <Grid size={{ xs: 12, lg: 4 }}>
+            <Grid item xs={12} lg={4}>
               <Pillar image='archi3.jpg' title='Transform' />
             </Grid>
           </Grid>
@@ -254,7 +254,7 @@ function App() {
           <SectionLabel>Services</SectionLabel>
           <Grid container spacing={3} justifyContent="center">
             {SERVICES.map((s) => (
-              <Grid key={s.title} size={{ xs: 12, sm: 6, lg: 3 }}>
+              <Grid key={s.title} item xs={12} sm={6} lg={3}>
                 <ServiceCard title={s.title} desc={s.desc} />
               </Grid>
             ))}
