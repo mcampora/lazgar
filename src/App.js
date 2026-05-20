@@ -56,8 +56,8 @@ function Pillar(props) {
       borderRadius: '0.75rem',
       boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
       position: 'relative',
-      minWidth: 180,
-      minHeight: 380,
+      width: '100%',
+      aspectRatio: '1 / 1',
       overflow: 'hidden',
       '&:after': {
         content: '""',
@@ -215,17 +215,11 @@ function App() {
 
         {/* Approach */}
         <Box sx={{ mb: 6, textAlign: 'center' }}>
-          <Grid container justifyContent="center" spacing={2}>
-            <Grid item xs={12} lg={4}>
-              <Pillar image='archi1.jpg' title='Understand' />
-            </Grid>
-            <Grid item xs={12} lg={4}>
-              <Pillar image='archi2.jpg' title='Define' />
-            </Grid>
-            <Grid item xs={12} lg={4}>
-              <Pillar image='archi3.jpg' title='Transform' />
-            </Grid>
-          </Grid>
+          <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+            <Box sx={{ flex: 1, minWidth: 0 }}><Pillar image='archi1.jpg' /></Box>
+            <Box sx={{ flex: 1, minWidth: 0 }}><Pillar image='archi2.jpg' /></Box>
+            <Box sx={{ flex: 1, minWidth: 0 }}><Pillar image='archi3.jpg' /></Box>
+          </Box>
         </Box>
 
         <Divider sx={{ borderColor: 'rgba(255,255,255,0.1)', mb: 6 }} />
