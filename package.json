@@ -3,20 +3,32 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "*",
-    "@material-ui/icons": "*",
+    "@emotion/react": "*",
+    "@emotion/styled": "*",
+    "@mui/icons-material": "*",
+    "@mui/material": "*",
     "react": "*",
     "react-dom": "*",
     "react-scripts": "*",
     "web-vitals": "*"
   },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "*",
+    "@playwright/test": "^1.60.0"
+  },
   "overrides": {
-    "nth-check": "2.1.1"
+    "nth-check": ">=2.1.1",
+    "postcss": ">=8.5.10",
+    "serialize-javascript": ">=6.0.2",
+    "underscore": ">=1.13.7",
+    "@tootallnate/once": ">=3.0.1",
+    "webpack-dev-server": "^4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:e2e": "playwright test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
