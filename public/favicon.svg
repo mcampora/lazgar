@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <mask id="cut">
+      <rect width="64" height="64" fill="white"/>
+      <rect x="21.1" y="17.9" width="7" height="23.7" fill="black"/>
+      <rect x="21.1" y="37.8" width="24.3" height="7" fill="black"/>
+    </mask>
+  </defs>
+  <!-- paper background tile with rounded corners -->
+  <rect width="64" height="64" rx="18" fill="oklch(0.985 0.005 90)"/>
+  <!-- ink mark, scaled to 40x40 centered in 64x64 (offset 12,12) -->
+  <g transform="translate(12,12) scale(0.2)">
+    <rect x="28" y="28" width="144" height="144" rx="16" fill="oklch(0.22 0.04 252)" mask="url(#cut)"/>
+    <path d="M 172 28 L 172 60 L 140 28 Z" fill="oklch(0.72 0.16 55)"/>
+  </g>
+</svg>
