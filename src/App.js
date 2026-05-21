@@ -214,10 +214,10 @@ export default function App() {
           <LazgarMark size={44} />
           <Box sx={{ width: '1px', alignSelf: 'stretch', backgroundColor: T.line }} />
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-            <Typography sx={{ fontFamily: FONTS.sans, fontWeight: 600, fontSize: '22px', letterSpacing: '-0.025em', lineHeight: 1, color: T.ink }}>
+            <Typography sx={{ fontFamily: FONTS.sans, fontWeight: 600, fontSize: { xs: '17px', md: '22px' }, letterSpacing: '-0.025em', lineHeight: 1, color: T.ink }}>
               LAZGAR
             </Typography>
-            <Box component="span" sx={{ fontFamily: FONTS.mono, fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: T.muted }}>
+            <Box component="span" sx={{ fontFamily: FONTS.mono, fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: T.muted, display: { xs: 'none', md: 'block' } }}>
               IT strategy &amp; solutions
             </Box>
           </Box>
