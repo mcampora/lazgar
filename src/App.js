@@ -116,22 +116,44 @@ function ServiceCard({ num, title, desc, featured }) {
 }
 
 /* ── Publication row ── */
-const PUBLICATIONS = [
-  { type: 'article', date: 'Apr 2026', title: 'SageMaker Unified Studio: how to manage connections to an existing database', url: 'https://medium.com/aws-tip/sagemaker-unified-studio-how-to-manage-connections-to-an-existing-database-0fc472fc3551' },
-  { type: 'article', date: 'Apr 2026', title: 'A CDK Primer', url: 'https://medium.com/aws-in-plain-english/a-cdk-primer-6b596dcf38e1' },
-  { type: 'talk',    date: 'Jan 2026', title: 'AWS re:Invent 2025 Recap – Lightning Talk Edition — Montréal AWS User Group', url: 'https://www.meetup.com/montreal-aws-users-united/events/312370185/' },
-  { type: 'article', date: 'Jan 2026', title: 'Eliminating Lambda Cold Starts', url: 'https://medium.com/aws-in-plain-english/eliminating-lambda-cold-starts-25e3b8412b92' },
-  { type: 'article', date: 'Jan 2026', title: 'SageMaker Unified Studio — new features in 2026', url: 'https://medium.com/aws-in-plain-english/sagemaker-unified-studio-new-features-in-2026-5592ad0e8e41' },
-  { type: 'talk',    date: 'Nov 2025', title: 'Lambda vs. Containers: Understanding the Trade-offs — Montréal AWS User Group', url: 'https://www.meetup.com/montreal-aws-users-united/events/311710974/' },
-  { type: 'article', date: 'Nov 2025', title: 'External connection to SageMaker Unified Studio data', url: 'https://medium.com/aws-in-plain-english/external-connection-to-sagemaker-unified-studio-data-ad6c434b50ad' },
-  { type: 'article', date: 'Oct 2025', title: 'SageMaker Studio: how to automate everything (part 2)', url: 'https://medium.com/aws-in-plain-english/sagemaker-studio-how-to-automate-everything-part-2-bf0ef41e8ad0' },
-  { type: 'article', date: 'Sep 2025', title: 'SageMaker Studio: how to automate everything (part 1)', url: 'https://medium.com/aws-in-plain-english/sagemaker-studio-how-to-automate-everything-part-1-467f0ba031a6' },
-  { type: 'article', date: 'Aug 2025', title: 'Tame the Data Beast', url: 'https://medium.com/aws-tip/tame-the-data-beast-170dfa08238e' },
-  { type: 'article', date: 'Jul 2025', title: 'Isolating Changes: Branching and Versioning with Iceberg on S3Tables', url: 'https://medium.com/aws-tip/isolating-changes-branching-and-versioning-with-iceberg-on-s3tables-b11e41705736' },
-  { type: 'article', date: 'Jul 2025', title: 'Implementing Fine-Grained Access Control with AWS Glue and S3 Tables', url: 'https://medium.com/aws-in-plain-english/implementing-fine-grained-access-control-with-aws-glue-and-s3-tables-ce22cbc6a8fb' },
-  { type: 'talk',    date: 'Jun 2025', title: 'Beyond Kubernetes: Serverless Execution Models for Variable Workloads — KubeFM Podcast', url: 'https://kube.fm/kubernetes-vs-lambda-marc' },
-  { type: 'article', date: 'Jun 2025', title: 'I discovered recently that DuckDB integrates with S3Tables API', url: 'https://medium.com/@marccampora/i-discovered-recently-that-duckdb-integrates-with-this-api-0514996480d0' },
+const TALKS = [
+  { type: 'talk', isoDate: '2026-01-15', date: 'Jan 2026', title: 'AWS re:Invent 2025 Recap – Lightning Talk Edition — Montréal AWS User Group', url: 'https://www.meetup.com/montreal-aws-users-united/events/312370185/' },
+  { type: 'talk', isoDate: '2025-11-01', date: 'Nov 2025', title: 'Lambda vs. Containers: Understanding the Trade-offs — Montréal AWS User Group', url: 'https://www.meetup.com/montreal-aws-users-united/events/311710974/' },
+  { type: 'talk', isoDate: '2025-06-15', date: 'Jun 2025', title: 'Beyond Kubernetes: Serverless Execution Models for Variable Workloads — KubeFM Podcast', url: 'https://kube.fm/kubernetes-vs-lambda-marc' },
 ];
+
+const MONTH_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function parseRssItem(item) {
+  const link = item.querySelector('link');
+  const url = link ? (link.nextSibling?.nodeValue?.trim() || link.textContent.trim()) : '';
+  const title = item.querySelector('title')?.textContent.trim() || '';
+  const pubDate = item.querySelector('pubDate')?.textContent.trim() || '';
+  const d = new Date(pubDate);
+  const isoDate = d.toISOString().slice(0, 10);
+  const date = `${MONTH_ABBR[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+  return { type: 'article', isoDate, date, title, url };
+}
+
+function usePublications() {
+  const [publications, setPublications] = React.useState(null);
+
+  React.useEffect(() => {
+    const proxy = 'https://api.allorigins.win/raw?url=';
+    const feed = encodeURIComponent('https://medium.com/feed/@marccampora');
+    fetch(proxy + feed)
+      .then(r => r.text())
+      .then(xml => {
+        const doc = new DOMParser().parseFromString(xml, 'text/xml');
+        const articles = Array.from(doc.querySelectorAll('item')).map(parseRssItem);
+        const merged = [...articles, ...TALKS].sort((a, b) => b.isoDate.localeCompare(a.isoDate));
+        setPublications(merged);
+      })
+      .catch(() => setPublications(TALKS));
+  }, []);
+
+  return publications;
+}
 
 const SERVICES = [
   { num: '01 / strategy', title: 'Technology Alignment', desc: 'Identify the need for modernisation, define the target architecture, and map out the trajectories to get there — bridging business intent with technical direction.' },
@@ -178,6 +200,7 @@ const theme = createTheme({
 });
 
 export default function App() {
+  const publications = usePublications();
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -289,9 +312,10 @@ export default function App() {
         <Box sx={{ mb: 8 }}>
           <SectionLabel>Recent Publications &amp; Talks</SectionLabel>
           <Box sx={{ maxWidth: '860px' }}>
-            {PUBLICATIONS.map((p) => (
-              <PublicationRow key={p.url} {...p} />
-            ))}
+            {publications === null
+              ? <MonoLabel sx={{ opacity: 0.4 }}>Loading…</MonoLabel>
+              : publications.map((p) => <PublicationRow key={p.url} {...p} />)
+            }
           </Box>
         </Box>
 
