@@ -124,28 +124,23 @@ const TALKS = [
 
 const MONTH_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-function parseRssItem(item) {
-  const link = item.querySelector('link');
-  const url = link ? (link.nextSibling?.nodeValue?.trim() || link.textContent.trim()) : '';
-  const title = item.querySelector('title')?.textContent.trim() || '';
-  const pubDate = item.querySelector('pubDate')?.textContent.trim() || '';
-  const d = new Date(pubDate);
-  const isoDate = d.toISOString().slice(0, 10);
-  const date = `${MONTH_ABBR[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
-  return { type: 'article', isoDate, date, title, url };
-}
-
 function usePublications() {
   const [publications, setPublications] = React.useState(null);
 
   React.useEffect(() => {
-    const proxy = 'https://api.allorigins.win/raw?url=';
-    const feed = encodeURIComponent('https://medium.com/feed/@marccampora');
-    fetch(proxy + feed)
-      .then(r => r.text())
-      .then(xml => {
-        const doc = new DOMParser().parseFromString(xml, 'text/xml');
-        const articles = Array.from(doc.querySelectorAll('item')).map(parseRssItem);
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@marccampora')
+      .then(r => r.json())
+      .then(({ items = [] }) => {
+        const articles = items.map(item => {
+          const d = new Date(item.pubDate);
+          return {
+            type: 'article',
+            isoDate: d.toISOString().slice(0, 10),
+            date: `${MONTH_ABBR[d.getUTCMonth()]} ${d.getUTCFullYear()}`,
+            title: item.title,
+            url: item.link,
+          };
+        });
         const merged = [...articles, ...TALKS].sort((a, b) => b.isoDate.localeCompare(a.isoDate));
         setPublications(merged);
       })
