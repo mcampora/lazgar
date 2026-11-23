@@ -320,7 +320,7 @@ export default function App() {
         <Box sx={{ mb: 4 }}>
           <SectionLabel>AWS Certifications</SectionLabel>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
-            {['ccp','caip','csap','css','cdas'].map(c => (
+            {['ccp','caip','csaa', 'csap','css','cdas', 'cdea', 'cgaidp'].map(c => (
               <img key={c} style={{ width: '80px' }} src={`${c}.png`} alt={c} />
             ))}
           </Box>
