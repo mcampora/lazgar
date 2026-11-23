@@ -1,247 +1,347 @@
-//import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Container, CssBaseline, Typography, Divider } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 
-import React, { useEffect } from "react";
-import { createTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import { Container, CssBaseline, Typography } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-//import Icon from '@material-ui/core/Icon';
-//import List from '@material-ui/core/List';
-//import ListItem from '@material-ui/core/ListItem';
-//import ListItemText from '@material-ui/core/ListItemText';
-//import CloudIcon from '@material-ui/icons/Cloud';
-//import ListItemIcon from '@material-ui/core/ListItemIcon';
-//import SecurityIcon from '@material-ui/icons/Security';
-//import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-//import PeopleIcon from '@material-ui/icons/People';
-//import FiberNewIcon from '@material-ui/icons/FiberNew';
-//import AssessmentIcon from '@material-ui/icons/Assessment';
-//import FastForwardIcon from '@material-ui/icons/FastForward';
-//import TrackChangesIcon from '@material-ui/icons/TrackChanges';
+/* ── Design tokens (from Lazgar Identity System) ── */
+const T = {
+  ink:       'oklch(0.22 0.04 252)',
+  ink2:      'oklch(0.32 0.06 252)',
+  steel:     'oklch(0.52 0.07 245)',
+  paper:     'oklch(0.985 0.005 90)',
+  bone:      'oklch(0.95 0.008 80)',
+  line:      'oklch(0.88 0.008 250)',
+  lineSoft:  'oklch(0.92 0.006 250)',
+  muted:     'oklch(0.52 0.01 250)',
+  accent:    'oklch(0.72 0.16 55)',
+};
 
-// - select the right font
+const FONTS = {
+  sans:  '"Inter Tight", system-ui, sans-serif',
+  mono:  '"JetBrains Mono", monospace',
+  serif: '"Fraunces", serif',
+};
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: '100vw',
-    flexGrow: 1,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    textAlign: 'center',
-    padding: '10px',
-  },
-  grid: {
-  },
-  item: {
-    //alignItems: "center",
-    padding: '10px',
-  },
-  skill: {
-    textAlign: 'left',
-  },
-  skills: {
-    padding: '50px',
-    margin: '10px',
-    //background: 'rgba(79,116,154,1)',
-    background: 'rgba(89,126,164,1)',
-    borderRadius: '0.5rem',
-  },
-  badge: {
-    width: '100px',
-    margin: '10px',
-  },
-  bullet: {
-    padding: '10px',
-    fontSize: '2rem',
-  },
-  contact: {
-    textAlign: 'right',
-    paddingBottom: '25px',
-    paddingRight: '10px',
-  },
-  paper: {
-    //padding: theme.spacing(1),
-    //textAlign: 'center',
-  },
-  logo: {
-    maxHeight: '80px',
-    textAlign: 'left',
-  },
-  card: {
-    borderRadius: '0.5rem',
-    boxShadow: 'none',
-    position: 'relative',
-    minWidth: 180,
-    //minHeight: 200,
-    minHeight: 360,
-    //maxWidth: 300,
-    '&:after': {
-      content: '""',
-      display: 'block',
-      position: 'absolute',
-      width: '100%',
-      height: '64%',
-      bottom: 0,
-      zIndex: 1,
-      background: 'linear-gradient(to top, #000, rgba(0,0,0,0))',
-    },
-  },
-  content: {
-    position: 'absolute',
-    zIndex: 2,
-    bottom: 0,
-    width: '100%',
-  },
-  cover: ({ bgColor = 'rgba(0, 0, 0, 0.08)', bgPosition = 'center' }) => ({
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    top: 0,
-    left: 0,
-    zIndex: 0,
-    backgroundColor: bgColor,
-    backgroundPosition: bgPosition,
-  }),
-}));
-
-function Pillar(props) {
-  const classes = useStyles();
+let _markId = 0;
+/* ── SVG mark (inline, from identity system) ── */
+function LazgarMark({ size = 40, color = T.ink, accentColor = T.accent }) {
+  const id = React.useRef(`lzg${++_markId}`).current;
   return (
-    <Card className={classes.card}>
-      <CardMedia className={classes.cover} image={props.image} />
-      <Box py={3} px={2} className={classes.content}>
-        <Typography variant="h5">{props.title}</Typography>
-        <Typography variant="caption" color="textSecondary">{props.desc}</Typography>
-      </Box>
-    </Card>
+    <svg width={size} height={size} viewBox="0 0 200 200" aria-hidden="true">
+      <defs>
+        <mask id={`cut-${id}`}>
+          <rect width="200" height="200" fill="white"/>
+          <rect x="66" y="56" width="22" height="74" fill="black"/>
+          <rect x="66" y="118" width="76" height="22" fill="black"/>
+        </mask>
+      </defs>
+      <rect x="28" y="28" width="144" height="144" rx="16" fill={color} mask={`url(#cut-${id})`}/>
+      <path d="M 172 28 L 172 60 L 140 28 Z" fill={accentColor}/>
+    </svg>
   );
 }
 
-function App() {
-  const classes = useStyles();
-
-  const prefersDarkMode = true; //useMediaQuery("(prefers-color-scheme: dark)");
-  const [darkMode, setDarkMode] = React.useState(prefersDarkMode);
-  console.log(darkMode);
-  useEffect(() => {
-    setDarkMode(prefersDarkMode);
-  }, [prefersDarkMode]);
-
-  const theme = React.useMemo(() =>
-    createTheme({
-      palette: {
-        type: darkMode ? "dark" : "light",
-        background: {
-          default: 'rgba(79,116,153)',
-          paper: 'rgba(79,116,153)',
-        },
-        typography: {
-          "fontFamily": "'Montserrat', sans-serif",
-          "fontSize": 14,
-          "fontWeightLight": 300,
-          "fontWeightRegular": 400,
-          "fontWeightMedium": 500
-        },
-      }
-    }), [darkMode]
+/* ── Mono label ── */
+function MonoLabel({ children, sx = {} }) {
+  return (
+    <Box component="span" sx={{
+      fontFamily: FONTS.mono,
+      fontSize: '11px',
+      letterSpacing: '0.16em',
+      textTransform: 'uppercase',
+      color: T.muted,
+      ...sx,
+    }}>{children}</Box>
   );
-  
+}
+
+/* ── Section heading ── */
+function SectionLabel({ children }) {
+  return (
+    <MonoLabel sx={{ display: 'block', mb: 4, color: T.muted }}>
+      {children}
+    </MonoLabel>
+  );
+}
+
+/* ── Photo card (approach images) ── */
+function PhotoCard({ image }) {
+  return (
+    <Box sx={{
+      width: '100%',
+      aspectRatio: '1 / 1',
+      borderRadius: '12px',
+      overflow: 'hidden',
+      backgroundImage: `url(${image})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }} />
+  );
+}
+
+/* ── Service card ── */
+function ServiceCard({ num, title, desc, featured }) {
+  return (
+    <Box sx={{
+      border: `1px solid ${featured ? T.ink : T.line}`,
+      borderRadius: '14px',
+      p: 3.5,
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 2,
+      backgroundColor: featured ? T.ink : T.paper,
+      color: featured ? T.paper : T.ink,
+    }}>
+      <MonoLabel sx={{ color: T.accent }}>{num}</MonoLabel>
+      <Typography sx={{
+        fontFamily: FONTS.sans,
+        fontWeight: 600,
+        fontSize: '18px',
+        letterSpacing: '-0.01em',
+        lineHeight: 1.2,
+        color: featured ? T.paper : T.ink,
+      }}>{title}</Typography>
+      <Typography sx={{
+        fontFamily: FONTS.sans,
+        fontSize: '13px',
+        lineHeight: 1.65,
+        color: featured ? 'rgba(255,255,255,0.65)' : T.muted,
+        flexGrow: 1,
+      }}>{desc}</Typography>
+    </Box>
+  );
+}
+
+/* ── Publication row ── */
+const TALKS = [
+  { type: 'talk', isoDate: '2026-01-15', date: 'Jan 2026', title: 'AWS re:Invent 2025 Recap – Lightning Talk Edition — Montréal AWS User Group', url: 'https://www.meetup.com/montreal-aws-users-united/events/312370185/' },
+  { type: 'talk', isoDate: '2025-11-01', date: 'Nov 2025', title: 'Lambda vs. Containers: Understanding the Trade-offs — Montréal AWS User Group', url: 'https://www.meetup.com/montreal-aws-users-united/events/311710974/' },
+  { type: 'talk', isoDate: '2025-06-15', date: 'Jun 2025', title: 'Beyond Kubernetes: Serverless Execution Models for Variable Workloads — KubeFM Podcast', url: 'https://kube.fm/kubernetes-vs-lambda-marc' },
+];
+
+const MONTH_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function usePublications() {
+  const [publications, setPublications] = React.useState(null);
+
+  React.useEffect(() => {
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@marccampora')
+      .then(r => r.json())
+      .then(({ items = [] }) => {
+        const articles = items.map(item => {
+          const d = new Date(item.pubDate);
+          return {
+            type: 'article',
+            isoDate: d.toISOString().slice(0, 10),
+            date: `${MONTH_ABBR[d.getUTCMonth()]} ${d.getUTCFullYear()}`,
+            title: item.title,
+            url: item.link,
+          };
+        });
+        const merged = [...articles, ...TALKS].sort((a, b) => b.isoDate.localeCompare(a.isoDate));
+        setPublications(merged);
+      })
+      .catch(() => setPublications(TALKS));
+  }, []);
+
+  return publications;
+}
+
+const SERVICES = [
+  { num: '01 / strategy', title: 'Technology Alignment', desc: 'Identify the need for modernisation, define the target architecture, and map out the trajectories to get there — bridging business intent with technical direction.' },
+  { num: '02 / delivery', title: 'Solutions', desc: 'Prototype and validate ideas, find or develop the right skills within your teams, and lead end-to-end transformations from inception to delivery.', featured: true },
+  { num: '03 / cloud',    title: 'FinOps', desc: 'Extensive hands-on experience with AWS cost management — designing governance frameworks, rightsizing workloads, and embedding financial accountability into engineering culture.' },
+  { num: '04 / ops',      title: 'Infrastructure', desc: 'Automate and optimise cloud infrastructure at scale — from CI/CD pipelines and IaC to platform reliability, observability, and operational excellence.' },
+];
+
+function PublicationRow({ type, date, title, url }) {
+  const isArticle = type === 'article';
+  return (
+    <Box component="a" href={url} target="_blank" rel="noopener noreferrer" sx={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 2,
+      py: 1.5,
+      px: 2,
+      borderRadius: '8px',
+      textDecoration: 'none',
+      color: 'inherit',
+      transition: 'background 0.15s',
+      '&:hover': { backgroundColor: T.bone },
+    }}>
+      <MonoLabel sx={{ minWidth: 72, fontSize: '10px', color: T.muted, opacity: 0.7 }}>{date}</MonoLabel>
+      <Box sx={{ width: 5, height: 5, borderRadius: '50%', flexShrink: 0, backgroundColor: isArticle ? T.steel : T.accent }} />
+      <Typography sx={{ fontFamily: FONTS.sans, fontSize: '14px', color: T.ink2, lineHeight: 1.5, flexGrow: 1, textAlign: 'left' }}>
+        {title}
+      </Typography>
+      <MonoLabel sx={{ ml: 'auto', flexShrink: 0, fontSize: '9px', opacity: 0.5 }}>
+        {isArticle ? 'Article' : 'Talk'}
+      </MonoLabel>
+    </Box>
+  );
+}
+
+/* ── MUI theme (minimal, light) ── */
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+    background: { default: T.bone, paper: T.paper },
+    text: { primary: T.ink, secondary: T.muted },
+  },
+  typography: { fontFamily: FONTS.sans },
+});
+
+export default function App() {
+  const publications = usePublications();
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline/>
-      <Container className={classes.root}>
-        <Grid className={classes.grid} container alignItems="flex-end" justify="center" spacing={0}>
-          <Grid className={classes.logo} item xs={12} md={6} lg={6}>
-            <img className={classes.logo} src="logo-title.png" alt="logo" />
+      <CssBaseline />
+
+      {/* ── Nav ── */}
+      <Box sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        px: { xs: 3, md: 6 },
+        py: 2.5,
+        borderBottom: `1px solid ${T.lineSoft}`,
+        backgroundColor: T.paper,
+      }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <LazgarMark size={44} />
+          <Box sx={{ width: '1px', alignSelf: 'stretch', backgroundColor: T.line }} />
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <Typography sx={{ fontFamily: FONTS.sans, fontWeight: 600, fontSize: { xs: '17px', md: '22px' }, letterSpacing: '-0.025em', lineHeight: 1, color: T.ink }}>
+              LAZGAR
+            </Typography>
+            <Box component="span" sx={{ fontFamily: FONTS.mono, fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: T.muted, display: { xs: 'none', md: 'block' } }}>
+              IT strategy &amp; solutions
+            </Box>
+          </Box>
+        </Box>
+        <Box component="a"
+          href="mailto:marc.campora@lazgar.net?subject=Please tell me more...&body=Hello, I'd like to know more about your expertise and the type of services you are offering. Please come back to me. Regards."
+          sx={{
+            fontFamily: FONTS.sans,
+            fontSize: '13px',
+            fontWeight: 500,
+            color: T.paper,
+            backgroundColor: T.ink,
+            px: 2.5,
+            py: 1.25,
+            borderRadius: '999px',
+            textDecoration: 'none',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 1,
+            '&:after': { content: '""', width: 6, height: 6, borderRadius: '50%', backgroundColor: T.accent },
+          }}>
+          Contact
+        </Box>
+      </Box>
+
+      {/* ── Hero / approach images ── */}
+      <Box sx={{ px: { xs: 2, md: 4 }, pt: 4, pb: 2 }}>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Box sx={{ flex: 1, minWidth: 0 }}><PhotoCard image="archi1.jpg" /></Box>
+          <Box sx={{ flex: 1, minWidth: 0 }}><PhotoCard image="archi2.jpg" /></Box>
+          <Box sx={{ flex: 1, minWidth: 0 }}><PhotoCard image="archi3.jpg" /></Box>
+        </Box>
+      </Box>
+
+      <Container maxWidth="xl" sx={{ py: 6 }}>
+
+        {/* ── Who am I ── */}
+        <Box sx={{ mb: 8 }}>
+          <SectionLabel>Who am I</SectionLabel>
+          <Typography sx={{
+            fontFamily: FONTS.sans,
+            fontWeight: 500,
+            fontSize: { xs: '22px', md: '32px' },
+            letterSpacing: '-0.02em',
+            lineHeight: 1.2,
+            maxWidth: '26ch',
+            color: T.ink,
+            mb: 3,
+          }}>
+            Enterprise architect,{' '}
+            <Box component="em" sx={{ fontFamily: FONTS.serif, fontStyle: 'italic', fontWeight: 700, color: T.steel }}>
+              cloud specialist
+            </Box>
+            , and independent consultant.
+          </Typography>
+          <Typography sx={{
+            fontFamily: FONTS.sans,
+            fontSize: '17px',
+            lineHeight: 1.7,
+            color: T.ink2,
+            maxWidth: '62ch',
+          }}>
+            Marc Campora is a French enterprise architect, technical leader, and software executive
+            recognized for his expertise in high-scale cloud platforms, data architectures, and
+            serverless computing. He currently operates as an independent technical consultant
+            and is an official AWS Community Builder.
+          </Typography>
+        </Box>
+
+        <Divider sx={{ borderColor: T.line, mb: 8 }} />
+
+        {/* ── Services ── */}
+        <Box sx={{ mb: 8 }}>
+          <SectionLabel>Services</SectionLabel>
+          <Grid container spacing={3}>
+            {SERVICES.map((s) => (
+              <Grid key={s.title} item xs={12} sm={6} lg={3}>
+                <ServiceCard {...s} />
+              </Grid>
+            ))}
           </Grid>
-          <Grid className={classes.contact} item xs={12} md={6} lg={6}>
-            <Button
-              variant="contained"
-              className={classes.button}
-              //endIcon={<Icon>send</Icon>}
-              href="mailto:marc.campora@lazgar.net?subject=Please tell me more...&body=Hello, I'd like to know more about your expertise and the type of services you are offering. Please come back to me. Regards."
-            >
-              Contact us
-            </Button>
-          </Grid>
-          <Grid className={classes.item} item xs={12} lg={4}>
-            <Pillar 
-              image='archi1.jpg'
-              title='Understand'
-              desc='where you are starting from, the need for modernisation'
-            />
-          </Grid>
-          <Grid className={classes.item} item xs={12} lg={4}>
-            <Pillar 
-              image='archi2.jpg'
-              title='Define'
-              desc='where you want to be, identity the solutions and trajectories'
-            />
-          </Grid>
-          <Grid className={classes.item} item xs={12} lg={4}>
-            <Pillar 
-              image='archi3.jpg' 
-              title='Transform'
-              desc='find or develop the right skills, lead the transformation'
-            />
-          </Grid>
-          <Grid>
-          <img className={classes.badge} src="ccp.png" alt="ccp"/>
-          <img className={classes.badge} src="caip.png" alt="caip"/>
-          <img className={classes.badge} src="csap.png" alt="csap"/>
-          <img className={classes.badge} src="css.png" alt="css"/>
-          <img className={classes.badge} src="cdas.png" alt="cdas"/>
-          </Grid>
-          <Grid className={classes.item} item xs={12}>
-            <Typography variant="caption">Photo by <a href="https://unsplash.com/@bady?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">bady abbas</a>, <a href="https://unsplash.com/@lucabravo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Luca Bravo</a> and <a href="https://unsplash.com/@joelfilip?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Joel Filipe</a> on <a href="https://unsplash.com/photos/white-cubby-shelf-hxi_yRxODNc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></Typography><br/>
-            <Typography variant="caption">© 2025 Lazgar, all rights reserved</Typography>
-          </Grid>
-        </Grid>
+        </Box>
+
+        <Divider sx={{ borderColor: T.line, mb: 8 }} />
+
+        {/* ── Publications & Talks ── */}
+        <Box sx={{ mb: 8 }}>
+          <SectionLabel>Recent Publications &amp; Talks</SectionLabel>
+          <Box sx={{ maxWidth: '860px' }}>
+            {publications === null
+              ? <MonoLabel sx={{ opacity: 0.4 }}>Loading…</MonoLabel>
+              : publications.map((p) => <PublicationRow key={p.url} {...p} />)
+            }
+          </Box>
+        </Box>
+
+        <Divider sx={{ borderColor: T.line, mb: 8 }} />
+
+        {/* ── Certifications ── */}
+        <Box sx={{ mb: 4 }}>
+          <SectionLabel>AWS Certifications</SectionLabel>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
+            {['ccp','caip','csaa', 'csap','css','cdas', 'cdea', 'cgaidp'].map(c => (
+              <img key={c} style={{ width: '80px' }} src={`${c}.png`} alt={c} />
+            ))}
+          </Box>
+        </Box>
+
       </Container>
+
+      {/* ── Footer ── */}
+      <Box sx={{ borderTop: `1px solid ${T.line}`, px: { xs: 3, md: 6 }, py: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <LazgarMark size={24} />
+          <MonoLabel sx={{ fontSize: '10px' }}>© 2026 Lazgar, all rights reserved</MonoLabel>
+        </Box>
+        <MonoLabel sx={{ fontSize: '9px', opacity: 0.5 }}>
+          Photo by{' '}
+          <a href="https://unsplash.com/@bady" style={{ color: 'inherit' }}>bady abbas</a>,{' '}
+          <a href="https://unsplash.com/@lucabravo" style={{ color: 'inherit' }}>Luca Bravo</a> and{' '}
+          <a href="https://unsplash.com/@joelfilip" style={{ color: 'inherit' }}>Joel Filipe</a> on Unsplash
+        </MonoLabel>
+      </Box>
+
     </ThemeProvider>
   );
 }
-
-            /*<img className={classes.logo} src="logo-mini.png" alt="logo" /><br/>*/
-          /*
-            <List>
-              <ListItem>
-                <ListItemIcon><CloudIcon/></ListItemIcon>
-                <ListItemText primary="Cloud strategy" />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon><SecurityIcon/></ListItemIcon>
-                <ListItemText primary="Security review" />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon><AttachMoneyIcon/></ListItemIcon>
-                <ListItemText primary="Cost optimisation" /></ListItem>
-              <ListItem>
-                <ListItemIcon><PeopleIcon/></ListItemIcon>
-                <ListItemText primary="Recruitment" /></ListItem>
-              <ListItem>
-                <ListItemIcon><FiberNewIcon/></ListItemIcon>
-                <ListItemText primary="Emerging technologies" /></ListItem>
-              <ListItem>
-                <ListItemIcon><AssessmentIcon/></ListItemIcon>
-                <ListItemText primary="Due diligence" /></ListItem>
-              <ListItem>
-                <ListItemIcon><FastForwardIcon/></ListItemIcon>
-                <ListItemText primary="Modernisation" /></ListItem>
-              <ListItem>
-                <ListItemIcon><TrackChangesIcon/></ListItemIcon>
-                <ListItemText primary="Project management" /></ListItem>
-              <ListItem>
-                <ListItemText primary="..." /></ListItem>
-            </List>
-          */
-
-export default App;
